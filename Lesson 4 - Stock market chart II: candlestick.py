@@ -56,8 +56,10 @@ ohlc_df.time_period_start = pd.to_datetime(ohlc_df.time_period_start)
 # Set date as index
 ohlc_df = ohlc_df.set_index('time_period_start')
 
-ohlc_df = ohlc_df.astype(float)
+# Sort index in ascending order
+ohlc_df = ohlc_df.sort_index(ascending=True)
 
+ohlc_df = ohlc_df.astype(float)
 
 
 mpf.plot(ohlc_df, type='candle', style='yahoo', title='{} Stock Price'.format(symbol), ylabel='Price ($)', ylabel_lower='Volume', volume=True, mav=(3,6,9), figratio=(10,8), figscale=0.8)
